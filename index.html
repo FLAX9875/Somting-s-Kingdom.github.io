@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeyBlog - Personal Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2d3436;
+            --secondary: #636e72;
+            --accent: #0984e3;
+            --light: #dfe6e9;
+            --white: #ffffff;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header Styles */
+        header {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        nav a {
+            font-weight: 500;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0a6fc4;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            color: var(--white);
+        }
+
+        /* Blog Posts */
+        .blog-posts {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .post-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .post-content {
+            padding: var(--spacing-md);
+        }
+
+        .post-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--light);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .post-excerpt {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            color: var(--light);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .newsletter-form button {
+            padding: 0 24px;
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--spacing-lg) 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: var(--border-radius);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Hey<span>Blog</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Thoughts, stories and ideas</h1>
+            <p>A personal blog about technology, design, and the creative process. Sharing insights and experiences from my journey.</p>
+            <a href="#" class="btn">Read Latest Post</a>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-posts">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="posts-grid">
+                <!-- Post 1 -->
+                <article class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="post-content">
+                        <span class="post-category">Technology</span>
+                        <h3 class="post-title">The Future of Web Development in 2023</h3>
+                        <p class="post-excerpt">Exploring the latest trends and technologies shaping the future of web development and how they impact developers.</p>
+                        <div class="post-meta">
+                            <span>May 15, 2023</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="post-content">
+                        <span class="post-category">Design</span>
+                        <h3 class="post-title">Minimalism in Modern UI Design</h3>
+                        <p class="post-excerpt">How minimalism principles are transforming user interfaces and creating better user experiences across digital products.</p>
+                        <div class="post-meta">
+                            <span>April 28, 2023</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="post-content">
+                        <span class="post-category">Productivity</span>
+                        <h3 class="post-title">Building a Morning Routine That Works</h3>
+                        <p class="post-excerpt">Creating a morning routine that boosts productivity and sets a positive tone for the rest of your day.</p>
+                        <div class="post-meta">
+                            <span>April 10, 2023</span>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to my newsletter</h2>
+            <p>Get the latest posts delivered right to your inbox. No spam, ever.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 HeyBlog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our next update.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
