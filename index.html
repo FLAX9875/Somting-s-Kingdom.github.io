@@ -6,7 +6,6 @@
     <title>HeyBlog - Personal Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
         :root {
             --primary: #2d3436;
             --secondary: #636e72;
@@ -44,11 +43,6 @@
             color: var(--accent);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
@@ -56,7 +50,6 @@
             padding: 0 var(--spacing-md);
         }
 
-        /* Header Styles */
         header {
             padding: var(--spacing-lg) 0;
             border-bottom: 1px solid var(--light);
@@ -96,7 +89,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             padding: var(--spacing-xl) 0;
             text-align: center;
@@ -133,7 +125,6 @@
             color: var(--white);
         }
 
-        /* Blog Posts */
         .blog-posts {
             padding: var(--spacing-xl) 0;
         }
@@ -199,7 +190,6 @@
             font-size: 0.9rem;
         }
 
-        /* Newsletter */
         .newsletter {
             padding: var(--spacing-xl) 0;
             background-color: var(--primary);
@@ -239,7 +229,6 @@
             cursor: pointer;
         }
 
-        /* Footer */
         footer {
             padding: var(--spacing-lg) 0;
             background-color: #f8f9fa;
@@ -270,25 +259,20 @@
             color: var(--white);
         }
 
-        /* Responsive Styles */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
             }
-
             nav ul {
                 display: none;
             }
-
             .mobile-menu-btn {
                 display: block;
             }
-
             .newsletter-form {
                 flex-direction: column;
                 gap: var(--spacing-sm);
             }
-
             .newsletter-form input,
             .newsletter-form button {
                 width: 100%;
@@ -298,7 +282,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -318,7 +301,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Thoughts, stories and ideas</h1>
@@ -327,18 +309,16 @@
         </div>
     </section>
 
-    <!-- Blog Posts -->
     <section class="blog-posts">
         <div class="container">
             <h2 class="section-title">Latest Articles</h2>
             <div class="posts-grid">
-                <!-- Post 1 -->
                 <article class="post-card">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="post-content">
                         <span class="post-category">Technology</span>
                         <h3 class="post-title">The Future of Web Development in 2023</h3>
-                        <p class="post-excerpt">Exploring the latest trends and technologies shaping the future of web development and how they impact developers.</p>
+                        <p class="post-excerpt">Exploring the latest trends and technologies shaping the future of web development.</p>
                         <div class="post-meta">
                             <span>May 15, 2023</span>
                             <span>5 min read</span>
@@ -346,13 +326,12 @@
                     </div>
                 </article>
 
-                <!-- Post 2 -->
                 <article class="post-card">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="post-content">
                         <span class="post-category">Design</span>
                         <h3 class="post-title">Minimalism in Modern UI Design</h3>
-                        <p class="post-excerpt">How minimalism principles are transforming user interfaces and creating better user experiences across digital products.</p>
+                        <p class="post-excerpt">How minimalism principles are transforming user interfaces and creating better experiences.</p>
                         <div class="post-meta">
                             <span>April 28, 2023</span>
                             <span>7 min read</span>
@@ -360,13 +339,12 @@
                     </div>
                 </article>
 
-                <!-- Post 3 -->
                 <article class="post-card">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
                     <div class="post-content">
                         <span class="post-category">Productivity</span>
                         <h3 class="post-title">Building a Morning Routine That Works</h3>
-                        <p class="post-excerpt">Creating a morning routine that boosts productivity and sets a positive tone for the rest of your day.</p>
+                        <p class="post-excerpt">Creating a morning routine that boosts productivity and sets a positive tone.</p>
                         <div class="post-meta">
                             <span>April 10, 2023</span>
                             <span>4 min read</span>
@@ -377,7 +355,6 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section class="newsletter">
         <div class="container">
             <h2>Subscribe to my newsletter</h2>
@@ -389,7 +366,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
@@ -403,13 +379,11 @@
     </footer>
 
     <script>
-        // Simple mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             const nav = document.querySelector('nav ul');
             nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Newsletter form submission
         document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input').value;
